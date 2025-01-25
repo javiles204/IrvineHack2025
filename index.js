@@ -10,7 +10,7 @@ function incrementAura() {
     // only display decimal if decimal
     aura.innerHTML = auraCount.toFixed(2);
 
-    if (Math.random() < 0.1) {
+    if (Math.random() < 1) {
         sunshinePopup();
     }
 

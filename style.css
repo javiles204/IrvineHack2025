@@ -5,6 +5,38 @@ body, html {
    height: 100%;
 }
 
+.start-screen {
+    text-align: center;
+    background-color: #2d3e50;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.start-screen h1 {
+    color: #fff;
+    font-size: 36px;
+}
+
+.start-screen button {
+    text-align: center;
+    background-color: #2d3e50;
+    padding: 15px 30px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.start-screen button:hover {
+    background-color: #547859
+}
+
 .background {
    position: fixed;
    top: 0;
@@ -29,11 +61,48 @@ body, html {
     height: 100%;
 }
 
-.center h3 {
+.center h2, .center h3{
     text-align: center;
     font-size: 30px;
+    color: white;
+    text-shadow: 
+        -3px -3px 0 #000,  
+         3px -3px 0 #000,  
+        -3px  3px 0 #000,  
+         3px  3px 0 #000;  
     font-family: monospace;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
+}
+
+.shop {
+    margin-bottom: 400px;
+    text-align: center;
+}
+
+.shop h2 {
+    font-size: 30px;
+    color: white;
+    text-shadow: 
+        -3px -3px 0 #000,  
+        3px -3px 0 #000,  
+        -3px  3px 0 #000,  
+        3px  3px 0 #000;  
+    font-family: monospace;
+}
+
+.shop-item {
+    background-color: #552583; 
+    outline-style: solid;
+    outline-width: 3px;
+    outline-color: black;
+    color: white;
+    
+    font-family: monospace;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 .lebron-image {
@@ -73,4 +142,41 @@ body, html {
 
 .drop-lebron {
     animation: dropOutScreen 0.5s forwards ease-in;
+}
+
+.sunshine {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.sunshine img {
+    width: 400px;
+    animation: zoomIn 0.3s ease-in-out;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    } to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.sunshine:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.sunshine:active {
+    opacity: 0.8;
 }

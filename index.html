@@ -6,14 +6,34 @@
     <title>Lebonbon Clicker</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <section>
+    <div class="start-screen">
+        <h1>Welcome to Lebonbon Clicker</h1>
+        <button id="start-btn">Start Game</button>
+    </div>
+    <section id="game" class="hidden">
         <div class="background"></div>
         <div class="main">
             <div class="center">
-                <h3>Lebron Aura: <span class="lebron-aura">0</span></h3>
+                <h2>Lebron Aura: <span class="lebron-aura">0</span></h2>
+                <h3>Sunshine Multiplier: x<span class="sunshine-multiplier">1.0</span></h3>
                 <img src="./assets/LebronHead.png" alt="" srcset="" class="lebron-image" onclick="incrementAura()" draggable="false">
             </div>
+            <div class="shop">
+                <h2>Aura Shop</h2>
+                <div class="shop-item">
+                    <h3>Slam Dunk</h3>
+                    <p>Increase the amount of aura per click</p>
+                    <span>Cost: 10 Aura</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="sunshine hidden">
+            <img src="./assets/LebronSunshine.png" alt="" draggable="false">
         </div>
     </section>
 

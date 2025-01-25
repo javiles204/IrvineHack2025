@@ -1,8 +1,22 @@
 let aura = document.querySelector('.lebron-aura');
 const lebronHead = document.querySelector('.lebron-image'); 
+let multiplier = document.querySelector('.sunshine-multiplier');
+let sunshine = document.querySelector('.sunshine');
+let auraCount = 0;
+let multiplierCount = 1.0;
+
+const startButton = document.getElementById('start-btn');
+const startScreen = document.querySelector('.start-screen');
+const gameSection = document.getElementById('game');
 
 function incrementAura() {
-    aura.innerHTML = parseFloat(aura.innerHTML) + 1
+    auraCount += multiplierCount * 1;
+    aura.innerHTML = auraCount.toFixed(1);
+
+
+    if (Math.random() < 1) {
+        sunshinePopup();
+    }
 
     const duplicateLebron = document.createElement('img');
     duplicateLebron.src = './assets/LebronHead.png';
@@ -21,3 +35,35 @@ function incrementAura() {
         document.body.removeChild(duplicateLebron); 
     }, 500) 
 }
+
+startButton.addEventListener('click', function() {
+    startScreen.style.display = 'none';
+    gameSection.classList.remove('hidden');
+});
+
+function sunshinePopup() {
+    sunshine.classList.remove('hidden');
+
+    const randomX = Math.random() * (window.innerWidth - sunshine.offsetWidth);
+    const randomY = Math.random() * (window.innerHeight - sunshine.offsetHeight);
+
+    sunshine.style.position = "absolute";
+    sunshine.style.left = `${randomX}px`;
+    sunshine.style.top = `${randomY}px`;
+
+    setTimeout(() => {
+        sunshine.classList.add('hidden');
+    }, 1000);
+}
+
+sunshine.addEventListener('click', () => {
+    sunshine.classList.add('hidden');
+    multiplierCount += .01;
+    multiplier.innerHTML = multiplierCount.toFixed(1);
+});
+
+setInterval(() => {
+    if (auraCount >= 50 && Math.random() < 0.5) { 
+        sunshinePopup();
+    }
+}, Math.random() * 5000 + 5000);

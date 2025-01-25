@@ -7,7 +7,8 @@ let multiplierCount = 1;
 
 function incrementAura() {
     auraCount += multiplierCount * 1;
-    aura.innerHTML = auraCount.toFixed(1);
+    // only display decimal if decimal
+    aura.innerHTML = auraCount.toFixed(2);
 
     if (Math.random() < 0.1) {
         sunshinePopup();
@@ -48,7 +49,7 @@ function sunshinePopup() {
 
 sunshine.addEventListener('click', () => {
     sunshine.classList.add('hidden');
-    multiplierCount += 0.01;
+    multiplierCount += 0.05;
     multiplier.innerHTML = multiplierCount;
 });
 

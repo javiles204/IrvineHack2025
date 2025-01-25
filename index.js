@@ -3,18 +3,13 @@ const lebronHead = document.querySelector('.lebron-image');
 let multiplier = document.querySelector('.sunshine-multiplier');
 let sunshine = document.querySelector('.sunshine');
 let auraCount = 0;
-let multiplierCount = 1.0;
-
-const startButton = document.getElementById('start-btn');
-const startScreen = document.querySelector('.start-screen');
-const gameSection = document.getElementById('game');
+let multiplierCount = 1;
 
 function incrementAura() {
     auraCount += multiplierCount * 1;
     aura.innerHTML = auraCount.toFixed(1);
 
-
-    if (Math.random() < 1) {
+    if (Math.random() < 0.1) {
         sunshinePopup();
     }
 
@@ -36,11 +31,6 @@ function incrementAura() {
     }, 500) 
 }
 
-startButton.addEventListener('click', function() {
-    startScreen.style.display = 'none';
-    gameSection.classList.remove('hidden');
-});
-
 function sunshinePopup() {
     sunshine.classList.remove('hidden');
 
@@ -58,8 +48,8 @@ function sunshinePopup() {
 
 sunshine.addEventListener('click', () => {
     sunshine.classList.add('hidden');
-    multiplierCount += .01;
-    multiplier.innerHTML = multiplierCount.toFixed(1);
+    multiplierCount += 0.01;
+    multiplier.innerHTML = multiplierCount;
 });
 
 setInterval(() => {

@@ -1,5 +1,6 @@
 body {
     display: grid;
+    position: relative;
     place-items: center;
     height: 100vh;
     margin: 0;
@@ -17,11 +18,12 @@ body {
     text-align: center;
     font-size: 30px;
     font-family: monospace;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 .lebron-image {
     width: 300px;
+    animation: moveUpDown 2s infinite ease-in-out
 }
 
 .lebron-image:hover {
@@ -32,4 +34,28 @@ body {
 .lebron-image:active {
     opacity: 0.8;
     transform: scale(1.02)
+}
+
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-50px);
+    }
+}
+
+@keyframes dropOutScreen {
+    0% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(500px);
+        opacity: 0;
+    }
+}
+
+.drop-lebron {
+    animation: dropOutScreen 0.5s forwards ease-in;
 }

@@ -1,0 +1,157 @@
+body, html {
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+   height: 100%;
+}
+
+.background {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-image: url('./assets/LACourt.png');
+   background-size: cover;
+   background-position: center center;
+   background-repeat: no-repeat;
+   z-index: -1;
+}
+
+.main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 200px;
+    align-items: center;
+    height: 100%;
+}
+
+.center h2, .center h3{
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    text-shadow: 
+        -3px -3px 0 #000,  
+         3px -3px 0 #000,  
+        -3px  3px 0 #000,  
+         3px  3px 0 #000;  
+    font-family: monospace;
+}
+
+.center h3 {
+    margin-bottom: 90px;
+}
+
+.shop {
+    margin-bottom: 400px;
+    text-align: center;
+}
+
+.shop h2 {
+    font-size: 30px;
+    color: white;
+    text-shadow: 
+        -3px -3px 0 #000,  
+        3px -3px 0 #000,  
+        -3px  3px 0 #000,  
+        3px  3px 0 #000;  
+    font-family: monospace;
+}
+
+.shop-item {
+    background-color: #552583; 
+    outline-style: solid;
+    outline-width: 3px;
+    outline-color: black;
+    color: white;
+    
+    font-family: monospace;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.lebron-image {
+    width: 300px;
+    animation: moveUpDown 2s infinite ease-in-out
+}
+
+.lebron-image:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.lebron-image:active {
+    opacity: 0.8;
+    transform: scale(1.02)
+}
+
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-50px);
+    }
+}
+
+@keyframes dropOutScreen {
+    0% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(500px);
+        opacity: 0;
+    }
+}
+
+.drop-lebron {
+    animation: dropOutScreen 0.5s forwards ease-in;
+}
+
+.sunshine {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 2;
+}
+
+.sunshine img {
+    width: 400px;
+    animation: zoomIn 0.3s ease-in-out;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    } to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.sunshine:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.sunshine:active {
+    opacity: 0.8;
+}

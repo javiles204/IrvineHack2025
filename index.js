@@ -52,7 +52,6 @@ function incrementAura() {
     // only display decimal if decimal
     aura.innerHTML = auraCount.toFixed(2);
 
-
     const duplicateLebron = document.createElement('img');
     duplicateLebron.src = './assets/LebronHead.png';
     duplicateLebron.style.position = 'absolute';
@@ -62,10 +61,18 @@ function incrementAura() {
 
     const lebronHeadRect = lebronHead.getBoundingClientRect();
     const randomXOffset = Math.random() * 200 - 50;
+    const randomX = Math.random() * 400 - 200;
+    const randomRotation = Math.random() < 0.5 ? -1 : 1;
+    const firstRotation = randomRotation * 270
+    const secondRotation = randomRotation * 380
+    const thirdRotation = randomRotation * 780
 
     duplicateLebron.style.left = `${lebronHeadRect.left + 100}px`; 
     duplicateLebron.style.top = `${lebronHeadRect.top - 50}px`;
-    duplicateLebron.style.setProperty('--randomX', `${randomXOffset}px`);
+    duplicateLebron.style.setProperty('--randomX', `${randomX}px`);
+    duplicateLebron.style.setProperty('--j', `${firstRotation}deg`);
+    duplicateLebron.style.setProperty('--secondRotation', `${secondRotation}deg`);
+    duplicateLebron.style.setProperty('--thirdRotation', `${thirdRotation}deg`);
     duplicateLebron.classList.add('drop-lebron');
     
     document.body.appendChild(duplicateLebron);

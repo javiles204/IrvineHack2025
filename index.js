@@ -133,7 +133,7 @@ setInterval(() => {
 
 
 function giveAuraPerSecond() {
-    auraCount += auraPerSecond;
+    auraCount += auraPerSecond * multiplierCount;
     aura.innerHTML = auraCount.toFixed(2);
 }
 

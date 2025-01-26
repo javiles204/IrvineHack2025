@@ -71,6 +71,7 @@ body, html {
     font-family: monospace;
     font-size: 20px;
     padding: 10px;
+    width: 300px;
     margin: 10px;
     border-radius: 3px;
     cursor: pointer;
@@ -106,19 +107,18 @@ body, html {
 
 @keyframes dropOutScreen {
     0% {
-        transform: translateY(0px) translateX(0px) rotate(0deg);
+        transform: translateY(0px) translateX(0px) rotate(0);
         opacity: 0;
     }
     25% {
-        transform: translateY(-50px) translateX(var(--randomX)) rotate(270deg);
-
+        transform: translateY(-50px) translateX(var(--randomX)) rotate(var(--firstRotation));
     }
     50% {
-        transform: translateY(-100px) translateX(calc(var(--randomX) * 1.4)) rotate(370deg);
+        transform: translateY(-100px) translateX(calc(var(--randomX) * 1.4)) rotate(var(--secondRotation));
         opacity: 1;
     }
     100% {
-        transform: translateY(200px) translateX(calc(var(--randomX) * 1.8)) rotate(740deg); 
+        transform: translateY(200px) translateX(calc(var(--randomX) * 1.8)) rotate(var(--thirdRotation)); 
         opacity: 0;
     }
 }
@@ -159,11 +159,45 @@ body, html {
     }
 }
 
+@keyframes zoomOut {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+
 .sunshine:hover {
-    opacity: 0.9;
+    filter: brightness(80%);
     cursor: pointer;
 }
 
 .sunshine:active {
-    opacity: 0.8;
+    filter: brightness(50%);
+}
+
+button.open-pack {
+    background-color: #FDB927; 
+    outline-style: solid;
+    outline-width: 3px;
+    outline-color: black;
+    color: white;
+    
+    font-family: monospace;
+    font-size: 25px;
+    padding: 10px;
+    width: 200px;
+    height: 100px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+
+    position: absolute;
+    top: 11.5%;
+    left: 102%;
+}
+
+button.open-pack:hover {
+    filter: brightness(80%);
 }

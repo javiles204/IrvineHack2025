@@ -114,3 +114,13 @@ function incrementAPS() { //kingsLegacy
         legacyLvl.innerHTML = kingsLegacy.lvlCount;
     }
 }
+
+setInterval(() => {
+    if (auraPerSecond > 0) giveAuraPerSecond();
+}, 1000);
+
+
+function giveAuraPerSecond() {
+    auraCount += auraPerSecond;
+    aura.innerHTML = auraCount.toFixed(2);
+}

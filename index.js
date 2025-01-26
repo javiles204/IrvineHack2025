@@ -1,18 +1,21 @@
-let aura = document.querySelector('.lebron-aura');
 const lebronHead = document.querySelector('.lebron-image'); 
-let multiplier = document.querySelector('.sunshine-multiplier');
-let sunshine = document.querySelector('.sunshine');
+
+let aura = document.querySelector('.lebron-aura');
 let auraCount = 0;
+
+let multiplier = document.querySelector('.sunshine-multiplier');
 let multiplierCount = 1;
+let sunshine = document.querySelector('.sunshine');
+
+let cost = document.querySelector('.item-cost');
+let costCount = 10;
+
+let auraPerClick = 1;
 
 function incrementAura() {
-    auraCount += multiplierCount * 1;
+    auraCount += multiplierCount * auraPerClick;
     // only display decimal if decimal
     aura.innerHTML = auraCount.toFixed(2);
-
-    if (Math.random() < 1) {
-        sunshinePopup();
-    }
 
     const duplicateLebron = document.createElement('img');
     duplicateLebron.src = './assets/LebronHead.png';
@@ -49,12 +52,22 @@ function sunshinePopup() {
 
 sunshine.addEventListener('click', () => {
     sunshine.classList.add('hidden');
-    multiplierCount += 0.05;
-    multiplier.innerHTML = multiplierCount;
+    multiplierCount += 0.1;
+    multiplier.innerHTML = multiplierCount.toFixed(2);
 });
 
 setInterval(() => {
-    if (auraCount >= 50 && Math.random() < 0.5) { 
+    if (auraCount > 0 && Math.random() < 0.5) { 
         sunshinePopup();
     }
 }, Math.random() * 5000 + 5000);
+
+function incrementAPC() {
+    if (auraCount >= costCount) {
+        auraPerClick++;
+        auraCount -= costCount;
+        aura.innerHTML = auraCount.toFixed(2);
+        costCount *= 2;
+        cost.innerHTML = costCount;
+    }
+}

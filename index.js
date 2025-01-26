@@ -23,27 +23,69 @@ let legacyCost = document.getElementById('kings-legacy-cost');
 let legacyLvl = document.getElementById('kings-legacy-level');
 const kingsLegacy = {costCount:10, lvlCount:0};
 
+function getCumulativeWeights(items) {
+    let cumulativeWeights = [];
+    let totalWeight = 0;
+
+    items.forEach(item => {
+        totalWeight += item.weight;
+        cumulativeWeights.push(totalWeight);
+    });
+
+    return {cumulativeWeights, totalWeight};
+}
+
+function weightedRandomSelection(items) {
+    const {cumulativeWeights, totalWeight} = getCumulativeWeights(items);
+
+    const randomNum = Math.random() * totalWeight;
+
+    for (let i = 0; i < cumulativeWeights.length; i++) {
+        if (randomNum < cumulativeWeights[i]) {
+            return items[i].name;
+        }
+    }
+}
+
 function incrementAura() {
     auraCount += multiplierCount * auraPerClick;
     // only display decimal if decimal
     aura.innerHTML = auraCount.toFixed(2);
 
+
     const duplicateLebron = document.createElement('img');
     duplicateLebron.src = './assets/LebronHead.png';
     duplicateLebron.style.position = 'absolute';
     duplicateLebron.style.width = '100px';
+    duplicateLebron.style.zIndex = 1;
+    lebronHead.style.zIndex = 2;
 
     const lebronHeadRect = lebronHead.getBoundingClientRect();
-    const randomXOffset = Math.random() * 400 - 100;
+    const randomXOffset = Math.random() * 200 - 50;
 
-    duplicateLebron.style.left = `${lebronHeadRect.left + randomXOffset}px`; 
-    duplicateLebron.style.top = `${lebronHeadRect.top - 300}px`;
+    duplicateLebron.style.left = `${lebronHeadRect.left + 100}px`; 
+    duplicateLebron.style.top = `${lebronHeadRect.top - 50}px`;
+    duplicateLebron.style.setProperty('--randomX', `${randomXOffset}px`);
     duplicateLebron.classList.add('drop-lebron');
-
+    
     document.body.appendChild(duplicateLebron);
     setTimeout(() => {
         document.body.removeChild(duplicateLebron); 
     }, 500) 
+    
+    // GATCHA SYSTEM
+    const items = [
+        {name: 'LeBron\'s Hairline', weight: 100},
+        {name: 'LeBron\'s Basketball', weight: 100},
+        {name: 'Lakers\' Court', weight: 50},
+        {name: 'Space Jam', weight: 15},
+        {name: 'OURBALL', weight: 10},
+        {name: 'Lepookie', weight: 5},
+        {name: 'The King\'s Crown', weight: 1}
+    ];
+    
+    const result = weightedRandomSelection(items);
+    console.log(result);
 }
 
 function sunshinePopup() {

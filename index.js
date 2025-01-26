@@ -1,7 +1,7 @@
 const lebronHead = document.querySelector('.lebron-image'); 
 
 let aura = document.querySelector('.lebron-aura');
-let auraCount = 1000;
+let auraCount = 0;
 
 let multiplier = document.querySelector('.sunshine-multiplier');
 let multiplierCount = 1;

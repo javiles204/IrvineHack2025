@@ -5,14 +5,34 @@ let sunshine = document.querySelector('.sunshine');
 let auraCount = 0;
 let multiplierCount = 1;
 
+function getCumulativeWeights(items) {
+    let cumulativeWeights = [];
+    let totalWeight = 0;
+
+    items.forEach(item => {
+        totalWeight += item.weight;
+        cumulativeWeights.push(totalWeight);
+    });
+
+    return {cumulativeWeights, totalWeight};
+}
+
+function weightedRandomSelection(items) {
+    const {cumulativeWeights, totalWeight} = getCumulativeWeights(items);
+
+    const randomNum = Math.random() * totalWeight;
+
+    for (let i = 0; i < cumulativeWeights.length; i++) {
+        if (randomNum < cumulativeWeights[i]) {
+            return items[i].name;
+        }
+    }
+}
+
 function incrementAura() {
     auraCount += multiplierCount * 1;
     // only display decimal if decimal
     aura.innerHTML = auraCount.toFixed(2);
-
-    if (Math.random() < 1) {
-        sunshinePopup();
-    }
 
     const duplicateLebron = document.createElement('img');
     duplicateLebron.src = './assets/LebronHead.png';
@@ -30,6 +50,20 @@ function incrementAura() {
     setTimeout(() => {
         document.body.removeChild(duplicateLebron); 
     }, 500) 
+
+    console.log("HELO");
+
+    // GATCHA SYSTEM
+    const items = [
+        {name: 'LeBron\'s Hairline', weight: 100},
+        {name: 'LeBron\'s Basketball', weight: 100},
+        {name: 'Lakers\' Court', weight: 50},
+        {name: 'Space Jam', weight: 15},
+        {name: 'The King\'s Crown', weight: 1}
+    ];
+    
+    const result = weightedRandomSelection(items);
+    console.log(result);
 }
 
 function sunshinePopup() {
@@ -49,12 +83,13 @@ function sunshinePopup() {
 
 sunshine.addEventListener('click', () => {
     sunshine.classList.add('hidden');
-    multiplierCount += 0.05;
-    multiplier.innerHTML = multiplierCount;
+    multiplierCount += 0.1;
+    multiplier.innerHTML = multiplierCount.toFixed(2);
 });
 
 setInterval(() => {
-    if (auraCount >= 50 && Math.random() < 0.5) { 
+    if (auraCount > 0 && Math.random() < 0.5) { 
         sunshinePopup();
     }
 }, Math.random() * 5000 + 5000);
+

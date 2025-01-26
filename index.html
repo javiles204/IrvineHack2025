@@ -20,9 +20,19 @@
             <div class="shop">
                 <h2>Aura Shop</h2>
                 <div class="shop-item" id="slam-dunk" onclick="incrementAPC()">
-                    <h3>Slam Dunk x<span class="item-level">1</span></h3>
+                    <h3>Slam Dunk x<span id="slam-dunk-level">1</span></h3>
                     <p>Increase the amount of aura per click</p>
-                    <p>Cost: <span class="item-cost">10</span> Aura</p>
+                    <p>Cost: <span id="slam-dunk-cost">10</span> Aura</p>
+                </div>
+                <div class="shop-item" id="you-are-my-sunshine" onclick="incrementMultiplierRate()">
+                    <h3>You Are My Sunshine x<span id="you-are-my-sunshine-level">1</span></h3>
+                    <p>Increase the rate of multiplier appearing</p>
+                    <span>Cost: <span id="you-are-my-sunshine-cost">10</span> Aura</span>
+                </div>
+                <div class="shop-item" id="kings-legacy" onclick="incrementAPS()">
+                    <h3>King's Legacy x<span id="kings-legacy-level">0</span></h3>
+                    <p>Increase aura per second</p>
+                    <span>Cost: <span id="kings-legacy-cost">10</span> Aura</span>
                 </div>
             </div>
         </div>

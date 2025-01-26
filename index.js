@@ -7,13 +7,21 @@ let multiplier = document.querySelector('.sunshine-multiplier');
 let multiplierCount = 1;
 let sunshine = document.querySelector('.sunshine');
 
-let cost = document.querySelector('.item-cost');
-let costCount = 10;
-
 let auraPerClick = 1;
+let auraPerSecond = 0;
+let multiplierRate = 0.5;
 
-let itemLvl = document.querySelector('.item-level');
-let defaultLvl = 1;
+let slamDunkCost = document.getElementById('slam-dunk-cost');
+let slamDunkLvl = document.getElementById('slam-dunk-level');
+const slamDunk = {costCount:10, lvlCount:1};
+
+let sunshineCost = document.getElementById('you-are-my-sunshine-cost');
+let sunshineLvl = document.getElementById('you-are-my-sunshine-level');
+const youAreMySunshine = {costCount:10, lvlCount:1};
+
+let legacyCost = document.getElementById('kings-legacy-cost');
+let legacyLvl = document.getElementById('kings-legacy-level');
+const kingsLegacy = {costCount:10, lvlCount:0};
 
 function incrementAura() {
     auraCount += multiplierCount * auraPerClick;
@@ -60,21 +68,49 @@ sunshine.addEventListener('click', () => {
 });
 
 setInterval(() => {
-    if (auraCount > 0 && Math.random() < 0.5) { 
+    if (auraCount > 0 && Math.random() < multiplierRate) { 
         sunshinePopup();
     }
 }, Math.random() * 5000 + 5000);
 
-function incrementAPC() {
-    if (auraCount >= costCount) {
-        auraPerClick++;
-        auraCount -= costCount;
+function incrementMultiplierRate() { //youAreMySunshine
+    if (auraCount >= youAreMySunshine.costCount) {
+        multiplierRate += 0.05;
+        auraCount -= youAreMySunshine.costCount;
         aura.innerHTML = auraCount.toFixed(2);
 
-        costCount *= 3;
-        cost.innerHTML = costCount;
+        youAreMySunshine.costCount *= 3;
+        sunshineCost.innerHTML = youAreMySunshine.costCount;
 
-        defaultLvl++;
-        itemLvl.innerHTML = defaultLvl;
+        youAreMySunshine.lvlCount++;
+        sunshineLvl.innerHTML = youAreMySunshine.lvlCount;
+    }
+}
+
+function incrementAPC() { //slamDunk
+    if (auraCount >= slamDunk.costCount) {
+        auraPerClick++;
+        auraCount -= slamDunk.costCount;
+        aura.innerHTML = auraCount.toFixed(2);
+
+        slamDunk.costCount *= 3;
+        slamDunkCost.innerHTML = slamDunk.costCount;
+
+        slamDunk.lvlCount++;
+        slamDunkLvl.innerHTML = slamDunk.lvlCount;
+    }
+}
+
+function incrementAPS() { //kingsLegacy
+    if (auraCount >= kingsLegacy.costCount) {
+        auraPerSecond++;
+        auraCount -= kingsLegacy.costCount;
+        aura.innerHTML = auraCount.toFixed(2);
+
+        kingsLegacy.costCount *= 3;
+        legacyCost.innerHTML = kingsLegacy.costCount;
+
+        kingsLegacy.lvlCount++;
+        legacyLvl.innerHTML = kingsLegacy.lvlCount;
     }
 }

@@ -46,7 +46,7 @@ body, html {
 }
 
 .shop {
-    margin-bottom: 400px;
+    margin-bottom: 50px;
     text-align: center;
 }
 
@@ -76,18 +76,23 @@ body, html {
     cursor: pointer;
 }
 
+.shop-item:hover {
+    filter:brightness(90%);
+    cursor: pointer;
+}
+
 .lebron-image {
     width: 300px;
     animation: moveUpDown 2s infinite ease-in-out
 }
 
 .lebron-image:hover {
-    opacity: 0.9;
+    filter: brightness(80%);
     cursor: pointer;
 }
 
 .lebron-image:active {
-    opacity: 0.8;
+    filter: brightness(50%);
 }
 
 @keyframes moveUpDown {

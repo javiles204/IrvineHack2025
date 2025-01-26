@@ -34,31 +34,35 @@ function incrementAura() {
     // only display decimal if decimal
     aura.innerHTML = auraCount.toFixed(2);
 
-    const duplicateLebron = document.createElement('img');
+    let duplicateLebron = document.createElement('img');
     duplicateLebron.src = './assets/LebronHead.png';
     duplicateLebron.style.position = 'absolute';
     duplicateLebron.style.width = '100px';
+    duplicateLebron.style.zIndex = 1;
+    lebronHead.style.zIndex = 2;
 
     const lebronHeadRect = lebronHead.getBoundingClientRect();
-    const randomXOffset = Math.random() * 400 - 100;
+    const randomXOffset = Math.random() * 200 - 50;
 
-    duplicateLebron.style.left = `${lebronHeadRect.left + randomXOffset}px`; 
-    duplicateLebron.style.top = `${lebronHeadRect.top - 300}px`;
+    duplicateLebron.style.left = `${lebronHeadRect.left + 100}px`; 
+    duplicateLebron.style.top = `${lebronHeadRect.top - 50}px`;
+    duplicateLebron.style.setProperty('--randomX', `${randomXOffset}px`);
     duplicateLebron.classList.add('drop-lebron');
-
+    
     document.body.appendChild(duplicateLebron);
     setTimeout(() => {
         document.body.removeChild(duplicateLebron); 
     }, 500) 
-
-    console.log("HELO");
-
+    
     // GATCHA SYSTEM
     const items = [
         {name: 'LeBron\'s Hairline', weight: 100},
         {name: 'LeBron\'s Basketball', weight: 100},
         {name: 'Lakers\' Court', weight: 50},
         {name: 'Space Jam', weight: 15},
+        {name: 'OURBALL', weight: 10},
+        {name: 'Lepookie', weight: 5},
+        {name: ''}
         {name: 'The King\'s Crown', weight: 1}
     ];
     
@@ -92,4 +96,3 @@ setInterval(() => {
         sunshinePopup();
     }
 }, Math.random() * 5000 + 5000);
-

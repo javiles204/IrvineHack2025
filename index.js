@@ -12,6 +12,9 @@ let costCount = 10;
 
 let auraPerClick = 1;
 
+let itemLvl = document.querySelector('.item-level');
+let defaultLvl = 1;
+
 function incrementAura() {
     auraCount += multiplierCount * auraPerClick;
     // only display decimal if decimal
@@ -67,7 +70,11 @@ function incrementAPC() {
         auraPerClick++;
         auraCount -= costCount;
         aura.innerHTML = auraCount.toFixed(2);
-        costCount *= 2;
+
+        costCount *= 3;
         cost.innerHTML = costCount;
+
+        defaultLvl++;
+        itemLvl.innerHTML = defaultLvl;
     }
 }

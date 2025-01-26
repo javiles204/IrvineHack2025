@@ -62,7 +62,6 @@ function incrementAura() {
         {name: 'Space Jam', weight: 15},
         {name: 'OURBALL', weight: 10},
         {name: 'Lepookie', weight: 5},
-        {name: ''}
         {name: 'The King\'s Crown', weight: 1}
     ];
     

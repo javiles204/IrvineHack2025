@@ -164,21 +164,21 @@ function weightedRandomSelection(items) {
 let duplicateItem;
 let duplicateText;
 const items = [
-    {name: 'Leforehead', weight: 90, img: './assets/Leforehead.png', value: 300},
-    {name: 'LA Court', weight: 70, img: './assets/LebronCourt.png', value: 600},
-    {name: 'LeBron\'s Basketball', weight: 60, img: './assets/LebronBasketball.png', value: 1000},
-    {name: 'Space Jam', weight: 50, img: './assets/SpaceJam.png', value: 1500},
-    {name: 'OURBALL', weight: 30, img: './assets/OurBall.png', value: 2500},
-    {name: 'Lepookie', weight: 10, img: './assets/Lepookie.png', value: 4000},
+    {name: 'Leforehead', weight: 90, img: './assets/Leforehead.png', value: 100},
+    {name: 'LA Court', weight: 70, img: './assets/LebronCourt.png', value: 300},
+    {name: 'LeBron\'s Basketball', weight: 60, img: './assets/LebronBasketball.png', value: 500},
+    {name: 'Space Jam', weight: 50, img: './assets/SpaceJam.png', value: 750},
+    {name: 'OURBALL', weight: 30, img: './assets/OurBall.png', value: 1500},
+    {name: 'Lepookie', weight: 10, img: './assets/Lepookie.png', value: 3000},
     {name: 'The King\'s Crown', weight: 1, img: './assets/KingsCrown.png', value: 10000}
 ];
 
 openPack.addEventListener('click', () => {
-    if (auraCount < 1000) {
+    if (auraCount < 500) {
         return;
     }
 
-    auraCount -= 1000;
+    auraCount -= 500;
     aura.innerHTML = auraCount.toFixed(2);
     const result = weightedRandomSelection(items);
     console.log(result);
